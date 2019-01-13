@@ -1,2 +1,3 @@
 # RoboND_Perception_repo
-report of project
+report of project  
+For the main part,please refer to repo.md
