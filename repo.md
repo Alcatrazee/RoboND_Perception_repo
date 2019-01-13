@@ -31,4 +31,14 @@ By using point cloud library,it's easy to implement voxel downsampling.
 ##### Passthrough filter
 Passthrough filter is easy to understand,just like clipping a picture,passthrough filter 'cut' a point cloud and throw away the useless region.  
 ![alt text][img_passthrough]  
-This is the screenshot of point cloud after passthrough filter.  
+This is the screenshot of point cloud after passthrough filter.In this case,'cut' everything else except for the table and things on the table.   
+##### segmentation  
+In this case,use RANSAC to segment table and stuffs on the table.RANSAC(Random sample consensus) is an iterative method to estimate parameters of a mathematical model from a set of observed data that contains outliers.Unlike least square fit method,RANSAC will cut some of the data loose to have a better result.In this case,we just need to segment the table with a plane equation,then the rest is the outliers(we can get to it by set the parameter 'negative' to true).  
+![alt text][img_extracted_inliers]  
+This is the screenshot of inliers(table).
+![alt text][img_extracted_outliers]  
+This is the screenshot of outliers(Things on the table).
+### Excersice 2  
+
+
+
