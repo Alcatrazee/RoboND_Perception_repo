@@ -4,10 +4,10 @@
 
 Steps to complete the project:
 
-1.Make sure you have already setup your ROS Workspace in the VM provided by Udacity or on your own local Linux/ROS install. If you're not already setup, you can find instructions here.  
-2.Complete Perception Exercises 1, 2 and 3, which comprise the project perception pipeline.  
-3.Download or clone the project repository.  
-4.Follow the steps laid out in this [lesson](https://classroom.udacity.com/nanodegrees/nd209/parts/c199593e-1e9a-4830-8e29-2c86f70f489e/modules/e5bfcfbd-3f7d-43fe-8248-0c65d910345a/lessons/e3e5fd8e-2f76-4169-a5bc-5a128d380155/concepts/802deabb-7dbb-46be-bf21-6cb0a39a1961).  
+  1.Make sure you have already setup your ROS Workspace in the VM provided by Udacity or on your own local Linux/ROS install. If you're not already setup, you can find instructions here.  
+  2.Complete Perception Exercises 1, 2 and 3, which comprise the project perception pipeline.  
+  3.Download or clone the project repository.  
+  4.Follow the steps laid out in this [lesson](https://classroom.udacity.com/nanodegrees/nd209/parts/c199593e-1e9a-4830-8e29-2c86f70f489e/modules/e5bfcfbd-3f7d-43fe-8248-0c65d910345a/lessons/e3e5fd8e-2f76-4169-a5bc-5a128d380155/concepts/802deabb-7dbb-46be-bf21-6cb0a39a1961).  
 
 [img_dowmsample]: ./pictuers/EX1_downsampled.png
 [img_passthrough]: ./pictuers/EX1_pass_through_filter.png
@@ -39,6 +39,23 @@ This is the screenshot of inliers(table).
 ![alt text][img_extracted_outliers]  
 This is the screenshot of outliers(Things on the table).
 ### Excersice 2  
+#### Requirement:  
+Implement ecludiean cluster extraction to point cloud after segmentation.  
+By applying k-d tree method,we can cluster the segmented point cloud into pieces.The algorithm only require position of voxel,therefore,we get rid of the color information by using function from **pcl_helper.py**.Point cloud library offered convenient tools to do the job,we just need to tune the parameters.In this case,the acceptable parameters are(tolerance=0.001,minclustersize=0,maxclustersize=2000).
+###### k-d tree  
+k-d tree (short for k-dimensional tree) is a space-partitioning data structure for organizing points in a k-dimensional space.  
+In a bunch of data of k dimension(x1,x2,x3,...,xk),here's the way to build the k-d tree:  
+    1.Get median of data of the n<sup>th</sup> dimension,n = 1,2,3...  
+    2.Traverse every data to seperate data into two branches,whose left is the data less than the median,and right side is the data bigger than median.  
+    3.Traverse each branches,apply step 1 with n+1<sup>th</sup> dimension till n=k.
+After these process,we have a k-d tree.(It's really hard to express in English...)
+In this scenario,we can seperate voxels into each grid.Then we can extract these point cloud.  
 
+![alt text][img_clusters]
+This is the screenshot after eclidean cluster extraction.  
 
-
+### Excersice 3 
+#### Requirement:  
+Train a SVM and evaluate it's performance.
+###### SVM  
+In machine learning, support-vector machines (SVMs, also support-vector networks) are supervised learning models with associated learning algorithms that analyze data used for classification and regression analysis. 
