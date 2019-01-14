@@ -69,11 +69,11 @@ After trainning,the svm evaluation result seems pretty good,since I changed all 
 
 ### project:Pick and Place
 Pick and Place Setup
-1. For all three tabletop setups (test*.world), perform object recognition, then read in respective pick list (pick_list_*.yaml). Next construct the messages that would comprise a valid PickPlace request output them to .yaml format.
+1. For all three tabletop setups (test*.world), perform object recognition, then read in respective pick list (pick_list_x.yaml). Next construct the messages that would comprise a valid PickPlace request output them to .yaml format.
 These are the pictures of the PR2 perception and recognize things on the table. (Accuracy is still a problem!)
 ![alt_text][world1]  ![alt_text][world2]  ![alt_text][world3]   
 In world 1,accuracy is 100%,in world 2,there's one mistake,and also one mistake on world 3.  
-Output*.yaml are listed in the root folder.These files are not output in the same running as these pictures,so there will be some difference between them. 
+Outputx.yaml are listed in the root folder.These files are not output in the same running as these pictures,so there will be some difference between them. 
 In the program,first thing it does is to rotate the PR2 to look aroud to contruct a collision map,after that,we start to cluster and segement and recognize stuffs on the table.After recognizing all things,we are ready to make a dictionary and output yaml as well as call the service which drive the PR2 to pick.  
 However,there's some error occur in the process of coding.Such as data type error which almost drove me crazy, and I even rewrote the code of udacity to make my code run successfully,but in the end,I managed to fix the error and changed it back.Anyway,python is a very easy-to-use programming language,however the efficiency and data type concerns me.I'm looking forward to program with c++.
 
