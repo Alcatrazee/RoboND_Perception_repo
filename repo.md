@@ -19,6 +19,7 @@ Steps to complete the project:
 [world1]: ./pictuers/world1.png  
 [world2]: ./pictuers/world2.png 
 [world3]: ./pictuers/world3.png 
+[newest_img]: ./pictuers/all_fine.png
 
 This is a project to implement proception stage of a robot.  
 ### Excercise 1  
@@ -77,3 +78,6 @@ Outputx.yaml are listed in the root folder.These files are not output in the sam
 In the program,first thing it does is to rotate the PR2 to look aroud to contruct a collision map,after that,we start to cluster and segement and recognize stuffs on the table.After recognizing all things,we are ready to make a dictionary and output yaml as well as call the service which drive the PR2 to pick.  
 However,there's some error occur in the process of coding.Such as data type error which almost drove me crazy, and I even rewrote the code of udacity to make my code run successfully,but in the end,I managed to fix the error and changed it back.Anyway,python is a very easy-to-use programming language,however the efficiency and data type concerns me.I'm looking forward to program with c++.
 
+## Resummit changes.  
+1.Alterned the voxel grid parameter into half of before,then tunned the parameters of cluster and segmentation function.Now it can recognize all the things in world 3.Yeah~
+![alt text][newest_img]
