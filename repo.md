@@ -14,9 +14,11 @@ Steps to complete the project:
 [img_extracted_inliers]: ./pictuers/EX1_extracted_inliers.png
 [img_extracted_outliers]: ./pictuers/EX1_extracted_outliers.png
 [img_clusters]: ./pictuers/EX2_clusters.png
-[img_confusion matrices]: ./pictuers/trained_svm.png
+[img_confusion matrices]: ./pictuers/EX3_trained_svm.png
 [PR2_view]: ./pictuers/upload.png  
-
+[world1]: ./pictuers/world1.png  
+[world2]: ./pictuers/world2.png 
+[world3]: ./pictuers/world3.png 
 
 This is a project to implement proception stage of a robot.  
 ### Excercise 1  
@@ -56,6 +58,22 @@ This is the screenshot after eclidean cluster extraction.
 
 ### Excersice 3 
 #### Requirement:  
-Train a SVM and evaluate it's performance.
+Train a SVM and use it to recognize things on the table.
 ###### SVM  
-In machine learning, support-vector machines (SVMs, also support-vector networks) are supervised learning models with associated learning algorithms that analyze data used for classification and regression analysis. 
+In machine learning, support-vector machines (SVMs, also support-vector networks) are supervised learning models with associated learning algorithms that analyze data used for classification and regression analysis.In this case,I used linear method to construct the classifier.
+###### Trainning
+The important part of a trainning is feature extraction.In this project,we used histogram of HSV(or RGB) and normal as feature to train the SVM.By concatenate these two histogram,we obbtain feature list which is the trainning set we are going t o use.  
+###### Result  
+After trainning,the svm evaluation result seems pretty good,since I changed all options which the lesson pointed out that can increase the accuracy.Here's the  confusion matrices.  
+![alt text][img_confusion matrices]  
+
+### project:Pick and Place
+Pick and Place Setup
+1. For all three tabletop setups (test*.world), perform object recognition, then read in respective pick list (pick_list_*.yaml). Next construct the messages that would comprise a valid PickPlace request output them to .yaml format.
+These are the pictures of the PR2 perception and recognize things on the table. (Accuracy is still a problem!)
+![alt_text][world1]  ![alt_text][world2]  ![alt_text][world3]   
+In world 1,accuracy is 100%,in world 2,there's one mistake,and also one mistake on world 3.  
+Output*.yaml are listed in the root folder.These files are not output in the same running as these pictures,so there will be some difference between them. 
+In the program,first thing it does is to rotate the PR2 to look aroud to contruct a collision map,after that,we start to cluster and segement and recognize stuffs on the table.After recognizing all things,we are ready to make a dictionary and output yaml as well as call the service which drive the PR2 to pick.  
+However,there's some error occur in the process of coding.Such as data type error which almost drove me crazy, and I even rewrote the code of udacity to make my code run successfully,but in the end,I managed to fix the error and changed it back.Anyway,python is a very easy-to-use programming language,however the efficiency and data type concerns me.I'm looking forward to program with c++.
+
