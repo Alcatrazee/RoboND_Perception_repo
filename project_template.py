@@ -87,7 +87,7 @@ def pcl_callback(pcl_msg):
     outlier_filter.set_std_dev_mul_thresh(x)
     cloud = outlier_filter.filter()
     # TODO: Voxel Grid Downsampling
-    LEAF_SIZE = 0.01
+    LEAF_SIZE = 0.005
     vox = cloud.make_voxel_grid_filter()
     vox.set_leaf_size(LEAF_SIZE, LEAF_SIZE, LEAF_SIZE)
 
@@ -142,9 +142,9 @@ def pcl_callback(pcl_msg):
         # as well as minimum and maximum cluster size (in points)
         # NOTE: These are poor choices of clustering parameters
         # Your task is to experiment and find values that work for segmenting objects.
-        ec.set_ClusterTolerance(0.05)    # bigger makes more point as a p
+        ec.set_ClusterTolerance(0.03)    # bigger makes more point as a p
         ec.set_MinClusterSize(0)
-        ec.set_MaxClusterSize(1000)
+        ec.set_MaxClusterSize(3000)
         # Search the k-d tree for clusters
         ec.set_SearchMethod(tree)
         # Extract indices for each of the discovered clusters
