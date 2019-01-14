@@ -34,7 +34,7 @@ angle1 = Float64()
 angle2 = Float64()
 angle1.data = 1.57
 angle2.data = -1.57
-map_ready = True
+map_ready = False
 mapping_stage = 0
 start_time = 0
 outputed = False
@@ -343,13 +343,13 @@ def pr2_mover(object_list):
         str(world_num) + '.yaml'
     send_to_yaml(yaml_filename, dict_list) """
 
-    # output yaml file
-    """ if outputed == False:
+    # output yaml file,only once  at a running
+    if outputed == False:
         yaml_filename = '/home/alcatraz/catkin_ws/src/RoboND-Perception-Project/pr2_robot/scripts/output_yaml/output' + \
             str(world_num) + '.yaml'
         send_to_yaml(yaml_filename, dict_list)
         print('file output successful')
-        outputed = True """
+        outputed = True 
     # TODO: Output your request parameters into output yaml file
 
 
